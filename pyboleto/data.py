@@ -14,6 +14,10 @@ import datetime
 from decimal import Decimal
 
 
+from pybrasil.data import formata_data
+from pybrasil.valor import formata_valor
+
+
 class BoletoException(Exception):
     """ Exceções para erros no pyboleto"""
     def __init__(self, message):
@@ -490,3 +494,18 @@ class BoletoData(object):
         if r == 1:
             resto = soma % 11
             return resto
+
+    #
+    # Propriedades para valores formatados
+    #
+    @property
+    def data_vencimento_formatada(self):
+        return formata_data(self.data_vencimento)
+
+    @property
+    def data_documento_formatada(self):
+        return formata_data(self.data_documento)
+
+    @property
+    def valor_formatado(self):
+        return formata_valor(self._valor)
