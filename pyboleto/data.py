@@ -17,6 +17,11 @@ from decimal import Decimal
 from pybrasil.data import formata_data
 from pybrasil.valor import formata_valor
 
+from reportlab.graphics.barcode import createBarcodeDrawing
+from reportlab.lib.units import mm
+from PIL import Image as PILImage
+from StringIO import StringIO
+
 
 class BoletoException(Exception):
     """ Exceções para erros no pyboleto"""
@@ -148,6 +153,7 @@ class BoletoData(object):
         self.cedente_documento = kwargs.pop('cedente_documento', "")
         self.codigo_banco = kwargs.pop('codigo_banco', "")
         self.conta_cedente = kwargs.pop('conta_cedente', "")
+        self.conta_cedente_digito = kwargs.pop('conta_cedente', "")
         self.data_documento = kwargs.pop('data_documento', "")
         self.data_processamento = kwargs.pop('data_processamento',
                                              datetime.date.today())
@@ -509,3 +515,27 @@ class BoletoData(object):
     @property
     def valor_formatado(self):
         return formata_valor(self._valor)
+
+    @property
+    def imagem_codigo_barras(self):
+        parametros_cb = {
+            'ratio': 3,
+            'bearers': 0,
+            'quiet': 0,
+            'checksum': 0,
+            'barWidth': 2,
+            'barHeight': 68,
+            'value': self.barcode,
+            'format': 'svg',
+        }
+
+        imagem_cb = createBarcodeDrawing('I2of5', **parametros_cb)
+        imagem_cb = imagem_cb.asString('png')
+        open('/home/ari/cb.png', 'wb').write(imagem_cb)
+        # arquivo = StringIO(imagem_cb)
+        # imagem = PILImage.open(arquivo)
+        imagem = imagem_cb.encode('base64')
+        imagem = imagem.replace('\n', '')
+        imagem = imagem.replace('\r', '')
+
+        return imagem
