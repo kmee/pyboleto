@@ -16,6 +16,11 @@ class BoletoCaixaSindicato(BoletoData):
     cnae = ''
     codigo_sindical = ''
 
+    total_empregados = ''
+    qtd_contribuintes = ''
+    total_remuneracao_contribuintes = ''
+
+
     def __init__(self):
         super(BoletoCaixaSindicato, self).__init__()
 
