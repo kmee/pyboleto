@@ -531,7 +531,7 @@ class BoletoData(object):
 
         imagem_cb = createBarcodeDrawing('I2of5', **parametros_cb)
         imagem_cb = imagem_cb.asString('png')
-        open('/home/ari/cb.png', 'wb').write(imagem_cb)
+        open('/tmp/cb.png', 'wb').write(imagem_cb)
         # arquivo = StringIO(imagem_cb)
         # imagem = PILImage.open(arquivo)
         imagem = imagem_cb.encode('base64')
