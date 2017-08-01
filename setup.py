@@ -57,7 +57,7 @@ setup(
         'pyboleto'
     ],
     license='BSD',
-    description='Python Library to create "boletos de cobrança bancária" for several Brazilian banks',
+    description='Python Library to create "boletos de cobranca bancaria" for several Brazilian banks',
     long_description=read('README.rst'),
     download_url='http://pypi.python.org/pypi/pyboleto',
     scripts=[
