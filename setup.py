@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from __future__ import division, print_function, unicode_literals
+
 from setuptools import setup, find_packages
 import sys
 import os
