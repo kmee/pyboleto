@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-from __future__ import division, print_function, unicode_literals
 
 from setuptools import setup, find_packages
 import sys
@@ -52,7 +51,10 @@ setup(
     packages=find_packages(),
     package_data={
         '': ['LICENSE'],
-        'pyboleto': ['media/*.jpg', 'templates/*.html'],
+        'pyboleto': [
+            'media/*.jpg',
+            'templates/*.html'
+        ],
     },
     zip_safe=False,
     provides=[
