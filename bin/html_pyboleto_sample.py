@@ -1,5 +1,7 @@
 #!/Users/dudus/Work/pyboleto/venv/bin/python
 # -*- coding: utf-8 -*-
+from __future__ import division, print_function, unicode_literals
+
 import pyboleto
 import sys
 from pyboleto.bank.real import BoletoReal

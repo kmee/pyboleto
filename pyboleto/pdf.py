@@ -9,6 +9,7 @@
     :license: BSD, see LICENSE for more details.
 
 """
+from __future__ import division, print_function, unicode_literals
 import os
 
 from reportlab.graphics.barcode.common import I2of5
